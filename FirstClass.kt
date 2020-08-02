@@ -18,6 +18,13 @@ fun main() {
      *
      * 5. You can make function return a value by assigning a data type to it. for example :
      *      getMax(v1 : Int, v2 Int) : Int {} // now this function have to return an int value
+     *
+     * 6. In Kotlin Global vars have to be initialize when you declare them, in other other words
+     *    you have to give them a value ! like this var::  x : Int = 10 OR var x = 10
+     *
+     * 7. In Kotlin you can define global constant values like : val KEY_ID = "id"
+     *    also you can declare it like : const val KEY_ID = "id"
+     *    which is almost equivalent to public static final  KEY_ID ="id" in java
      */
 
 //   print("Hello World!\t")
@@ -34,14 +41,34 @@ fun main() {
 //   whenTrafficLightExample()
 //   whenExp()
 //   greetings("hi")
-//    printNumbersASC(23, 8)
-//    printNumbersDESC(23, 8)
+//   printNumbersASC(23, 8)
+//   printNumbersDESC(23, 8)
+//   println("Max number is ${getMax(3, 30)}")
+//   println("The smallest number is ${getMin(78, 87)}")
 
-   val maxNumber =  getMax(300, 300)
-   println("Max number is $maxNumber")
+//    defaultParametersExample()
+//    defaultParametersExample("hi")
+//    defaultParametersExample(repeat = 5)
+//    defaultParametersExample("hello", 5)
 
+//    println(getSum(10, 20, 40))
+//    println(getSum(50, 50))
+//    println(getSum(80, -50))
+//    val array = intArrayOf(2,3,5)
+//    println(getSum(*array))
+//    println(getSum(10,20,*array,30,40,50))
+
+//    println(getSum2(6, 2, 3, 5, b = 6))
+//    println(getSum2(a = 6, numbers = *intArrayOf(2, 3, 5), b = 6))
+//    val array2 = intArrayOf(2, 3, 5)
+//    println(getSum2(6, *array2, b = 6))
+//    println(getSum2(a = 6, numbers = *array2, b = 6))
+
+//    println(getBiggestNumber(1))
+//    println(getBiggestNumber(60,20,30,80,10))
 
 }
+
 
 fun math() {
 
@@ -362,3 +389,78 @@ fun getMax(v1: Int, v2: Int): Int {
         v2
     }
 }
+
+// single Expression Function Example this syntax works only if you have a single expression. This function will get minimum!
+fun getMin(x: Int, y: Int) = if (x >= y) y else x
+
+// this function overload the first one
+fun getMin(x: Double, y: Double) = if (x >= y) y else x
+
+/**
+ * "hello" & 1 are the default values, so you can call the function without any parameters
+
+ * or you can send any on of them or both.  All the following scenarios will work
+ * example :
+1. defaultParametersExample()
+2. defaultParametersExample("hi")
+2. defaultParametersExample(5)
+3. defaultParametersExample("hi" , 3)
+
+# However this call wont work :     defaultParametersExample(5)!
+
+# Solution :  defaultParametersExample(repeat = 5)
+
+ */
+fun defaultParametersExample(msg: String = "Hello Kotlin", repeat: Int = 1) {
+    for (i in 1..repeat) {
+        println("$i. $msg.")
+    }
+}
+
+/**
+ * #1 vararg allow you to send as many parameters as you want
+ * #2 You can add a default value this way : (vararg numbers: Int = intArrayOf(0))
+ * #3 You can call getSum() using the following ways:
+ *  3.1 getSum(1,2,3,5)
+ *  3.2 val array = intArrayOf( 1,2,3,5)
+ *      getSum(*array)// the "*" is called Spread Operator
+ *      // using *array is equivalent of typing numbers directly
+ *      // also you can call this this function like : getSum(10,20,*array,30,40,50)
+ *
+ *
+ *
+ */
+fun getSum(vararg numbers: Int): Int {
+    var sum = 0;
+    for (n in numbers) {
+        sum += n;
+    }
+    return sum
+}
+
+/**
+ * # You
+ *  getSum2( 6, 2,3,5, b = 6)
+ *  getSum2( a=6, numbers = *intArrayOf(2,3,5), b = 6)
+ *  val array2 = intArrayOf(2,3,5)
+ *  getSum2( 6, *array2 , b = 6)
+ *  getSum2( a=6, numbers = *array2, b = 6)
+ */
+fun getSum2(a: Int, vararg numbers: Int, b: Int): Int {
+    var sum = a * b;
+    for (n in numbers) {
+        sum += n;
+    }
+    return sum
+}
+
+fun getBiggestNumber(first: Int, vararg numbers: Int): Int {
+    var max = first;
+    for (i in numbers) {
+        if (i > max) {
+            max = i
+        }
+    }
+    return max
+}
+
