@@ -439,7 +439,7 @@ fun getSum(vararg numbers: Int): Int {
 }
 
 /**
- * # You
+ * # You can call this function like :
  *  getSum2( 6, 2,3,5, b = 6)
  *  getSum2( a=6, numbers = *intArrayOf(2,3,5), b = 6)
  *  val array2 = intArrayOf(2,3,5)
