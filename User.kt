@@ -1,0 +1,44 @@
+
+// this the kotlin model class
+class User {
+    var name: String? = null
+    var id = 0
+
+    override fun toString(): String {
+        return "name : \"$name\", id : $id"
+    }
+}
+
+/**
+
+ * this the equivalent java model class for user
+
+public class User {
+
+private String name;
+private int id;
+
+public String getName() {
+return name;
+}
+
+public void setName(String name) {
+this.name = name;
+}
+
+public int getId() {
+return id;
+}
+
+public void setId(int id) {
+this.id = id;
+}
+
+@Override
+public String toString() {
+return "name : \"" + name + "\", id : " + id;
+}
+}
+
+
+ */
