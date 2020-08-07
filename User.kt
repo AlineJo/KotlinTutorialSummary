@@ -1,5 +1,5 @@
 
-// this the kotlin model class
+// this is the kotlin model class
 class User {
     var name: String? = null
     var id = 0
@@ -11,7 +11,7 @@ class User {
 
 /**
 
- * this the equivalent java model class for user
+ * this is the equivalent java model class 
 
 public class User {
 
